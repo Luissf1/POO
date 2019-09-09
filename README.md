@@ -1,7 +1,7 @@
 # POO
-###Curso de POO del TEC
+### Curso de POO del TEC
 
-## Tareas
+# Tareas
 
 ### 1)Crear Repositorio en Github
 
@@ -10,7 +10,7 @@
 ### 3)Programa básico Películas
 
 
-## Practicas
+# Practicas
 ### 1)Hola Tec
 
 ### 2)Bici1
