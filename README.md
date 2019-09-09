@@ -1,5 +1,5 @@
 # POO
-Curso de POO del TEC
+###Curso de POO del TEC
 
 ## Tareas
 
