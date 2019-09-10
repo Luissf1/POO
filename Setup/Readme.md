@@ -3,7 +3,7 @@
 ### Ingresamos ala pagina de dotnet ,al entrar ala pagina selecionamos la instalacion que diga build app.
 ### Despues selecionamos la opcion de ubuntu.
 ### nos proporcionaran un codigo el cual ingresaremos ala terminal.
-### sudo dpkg -i packages-microsoft-prod.deb
+´´´ sudo dpkg -i packages-microsoft-prod.deb
 ### sudo apt-get install apt-transport-https
 ### sudo apt-get update
 ### sudo apt-get install dotnet-sdk-2.2
