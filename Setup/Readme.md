@@ -15,7 +15,7 @@
 ### Ingresamos ala pagina de visual code 
 ### Seleccionamos la version de .deb
 ### Entramos ala terminal
-### por medio del cd nos vamos al Doenloads (cd Downlods/)
+### por medio del cd nos vamos al Downloads (cd Downlods/)
 ### al entrar ala carpeta de descargas ingresamos "Downloads ls" funcion que sirve para ver archivos en esta carpeta 
 ### al ver el nombre del archivo que descargamos ,ingresamos "sudo dpkg -i" y el nombre del archivo completo.
 ### Al ingresar ese codigo se comenzara la descarga de visual code ,al finalizar selecionamos la opcion de extensiones en la parte izquierda para descargar c##.
