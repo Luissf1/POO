@@ -11,10 +11,10 @@
 
 
 # Practicas
-### 1)Hola Tec
+### 1)[Hola Tec](../README.md)
 
-### 2)Bici1
+### 2)[Bici1](../README.md)
 
-### 2)Bici2
+### 2)[Bici2](../README.md)
 
-### 3)Auto
+### 3)[Auto](../README.md)
