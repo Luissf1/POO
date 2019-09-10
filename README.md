@@ -13,7 +13,7 @@
 # Practicas
 ### 1)[Hola Tec](../README.md)
 
-### 2)[Bici1](../README.md)
+### 2)[Bici1](../Bici.cs)
 
 ### 2)[Bici2](../README.md)
 
