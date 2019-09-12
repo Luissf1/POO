@@ -9,6 +9,9 @@
 
 ### 3)Programa básico Películas
 
+### 4) [Programa básico Películas ]
+
+### 5) [Lista de Películas]
 
 # Practicas
 ### 1) [Hola Tec](./P1/Program.cs)
