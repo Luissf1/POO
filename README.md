@@ -7,9 +7,9 @@
 
 ### 2)[Ejercicio de Markdown en Github](./Setup/Readme.md)
 
-### 3)[Programa básico Películas](./Lista/Program.cs)
+### 3)Programa básico Películas
 
-### 4) Lista de Películas
+### 4) [Lista de Películas](./Lista/Program.cs)
 
 # Practicas
 ### 1) [Hola Tec](./P1/Program.cs)
