@@ -23,7 +23,8 @@
 # 3.Instalación de git. conectado a tu cuenta de GitHub y VSC.
 ### Ingresamos ala pagina de git selecionamos la version de ubuntu
 ### Abrimos nuestra terminal para ingresar el codigo que nos proporcionan 
-``` apt-get install git
-    add-apt-repository ppa:git-core/ppa 
-    apt update; apt install git
+``` sudo apt-get install git
+    sudo add-apt-repository ppa:git-core/ppa 
+    sudo apt update; apt install git
 ```
+### Terminamos entrando a visual code y bajando una extension de git.
