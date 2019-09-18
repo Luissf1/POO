@@ -1,7 +1,7 @@
 # Instalacion por medio de ubuntu
 # 1.Instalacion de dotnet core 2.2 
 ### Ingresamos ala pagina de [dotnet](https://dotnet.microsoft.com/) ,al entrar ala pagina selecionamos la instalacion que diga build app.
-![](../POO/dotnet.PNG)
+![](../Pictures/dotnet.PNG)
 ### Despues selecionamos la opcion de ubuntu.
 ### nos proporcionaran un codigo el cual ingresaremos ala terminal.
 ``` sudo dpkg -i packages-microsoft-prod.deb
@@ -14,7 +14,7 @@
 # 2.Instalación y configuración de Visual Studio Code para C#
 
 ### Ingresamos ala pagina de [visual code](https://code.visualstudio.com/) 
-![](../POO/visual.PNG)
+![](../Pictures/visual.PNG)
 ### Seleccionamos la version de .deb
 ### Entramos ala terminal
 ### por medio del cd nos vamos al Downloads (cd Downlods/)
@@ -24,7 +24,7 @@
 
 # 3.Instalación de git. conectado a tu cuenta de GitHub y VSC.
 ### Ingresamos ala pagina de [git](https://git-scm.com/) selecionamos la version de ubuntu
-![](../POO/git.PNG)
+![](../Pictures/git.PNG)
 ### Abrimos nuestra terminal para ingresar el codigo que nos proporcionan 
 ``` sudo apt-get install git
     sudo add-apt-repository ppa:git-core/ppa 
