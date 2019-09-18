@@ -12,7 +12,7 @@
 
 # 2.Instalación y configuración de Visual Studio Code para C#
 
-### Ingresamos ala pagina de visual code 
+### Ingresamos ala pagina de [visual code](https://code.visualstudio.com/) 
 ### Seleccionamos la version de .deb
 ### Entramos ala terminal
 ### por medio del cd nos vamos al Downloads (cd Downlods/)
@@ -21,7 +21,7 @@
 ### Al ingresar ese codigo se comenzara la descarga de visual code ,al finalizar selecionamos la opcion de extensiones en la parte izquierda para descargar c##.
 
 # 3.Instalación de git. conectado a tu cuenta de GitHub y VSC.
-### Ingresamos ala pagina de git selecionamos la version de ubuntu
+### Ingresamos ala pagina de [git](https://git-scm.com/) selecionamos la version de ubuntu
 ### Abrimos nuestra terminal para ingresar el codigo que nos proporcionan 
 ``` sudo apt-get install git
     sudo add-apt-repository ppa:git-core/ppa 
