@@ -1,7 +1,7 @@
 # Instalacion por medio de ubuntu
 # 1.Instalacion de dotnet core 2.2 
 ### Ingresamos ala pagina de [dotnet](https://dotnet.microsoft.com/) ,al entrar ala pagina selecionamos la instalacion que diga build app.
-![](../POO/dotnet.PNG)
+![](./POO/dotnet.PNG)
 ### Despues selecionamos la opcion de ubuntu.
 ### nos proporcionaran un codigo el cual ingresaremos ala terminal.
 ``` sudo dpkg -i packages-microsoft-prod.deb
