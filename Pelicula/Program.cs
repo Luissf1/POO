@@ -3,13 +3,28 @@ using System.Collections.Generic;
 
 namespace Pelicula
 {
+ 
+  class Actor
+  {
+      public string nombre;
+      public Int16 año;
+      public Actor(String nombre,Int16 año)
+      {
+          this.nombre=nombre;
+          this.año=año;
+      }
+  }
     class Pelicula
     {
     private String titulo;
     private Int16 año;
     private String pais;
-    private String director;
-   
+    private String director; 
+    
+    private  List<Actor> actores =new List<Actor>();
+  
+  
+
    public void SetTitulo(String titulo)
    {
        this.titulo=titulo;
@@ -48,6 +63,8 @@ namespace Pelicula
        return this.director;
    }
   
+  
+   
   public Pelicula()
   {
 
@@ -58,18 +75,37 @@ namespace Pelicula
   this.año=año;
   this.pais=pais;
   this.director=director;
+  
+  
   }
+  
   public void Imprime()
   {
  Console.WriteLine("{0}({1}){2},{3}", this.titulo, this.año,this.pais,this.director);
   }
+  public void AgregarActor(Actor actor)
+  {
+                actores.Add(actor);
+              
+  }
+  public void ImprimeActores()
+  {
+      foreach(Actor act in actores)
+      {
+      Console.WriteLine("{0},{1}",act.nombre,act.año);
+      }
+  }
+ 
     }
     class Program
     {
         static void Main()
         {
+
            Pelicula P1 = new Pelicula();
            Pelicula P2 = new Pelicula();
+           
+               
           
            P1.SetTitulo("Titanic:");
            P1.SetAño(1997);
@@ -81,8 +117,12 @@ namespace Pelicula
            P2.SetPais("Nueva Zelanda");
            P2.SetDirector("Peter Jackson");
 
+           P1.AgregarActor(new Actor("Leonardo Dicaprio",1974));
+           P2.AgregarActor(new Actor("Elijah Woods",1981));
            P1.Imprime();
+           P1.ImprimeActores();
            P2.Imprime();
+           P2.ImprimeActores();
 
            //Console.WriteLine(P1.GetTitulo()+P1.GetAño()+P1.GetPais()+P1.GetDirector());
            //Console.WriteLine(P2.GetTitulo()+P2.GetAño()+P2.GetPais()+P2.GetDirector());
