@@ -10,7 +10,7 @@
 
 ### 4) [Lista de Películas](./Lista/Program.cs)
 
-### 5)Actores(./Pelicula/Program.cs)
+### 5)[Actores](./Pelicula/Program.cs)
 
 # Practicas
 ### 1) [Hola Tec](./P1/Program.cs)
