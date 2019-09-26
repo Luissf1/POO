@@ -24,7 +24,7 @@ namespace espias
         public static void cambia(ref Persona p)
         {
             p = new Persona();
-            p.nombre="new";
+            p.nombre="nuevo";
         }
     }
 
