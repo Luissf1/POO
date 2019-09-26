@@ -19,7 +19,7 @@ namespace espias
         public static void anonimiza (  Persona p)
         {
             p.nombre="xxxxx";
-            p.apellido="xxxxx";
+            p.apellido="xxxxxx";
         }
         public static void cambia(ref Persona p)
         {
