@@ -12,6 +12,8 @@
 
 ### 5)[Actores](./Pelicula/Program.cs)
 
+### 6)[Paso de parámetros](./Paso/Program.cs)
+
 # Practicas
 ### 1) [Hola Tec](./P1/Program.cs)
 
