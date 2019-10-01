@@ -3,62 +3,53 @@
 namespace Paso
 {
     
-    class Persona 
-    {
-       public string nombre;
-       public string apellido;
+  class Multiplicar{
 
-       public Persona()
-       {
-           nombre="Fulano";
-           apellido="De tal";
+	public void multi(ref int n) { 
+			n = n*5;
+	}
 
-       }
-    }
-    class Anonymous{
-        public static void anonimiza (  Persona p)
-        {
-            p.nombre="xxxxx";
-            p.apellido="xxxxxx";
-        }
-        public static void cambia(ref Persona p)
-        {
-            p = new Persona();
-            p.nombre="nuevo";
-        }
-    }
+}
+  class resta{
+
+	public void re(in int n3) { 
+			
+	}
+
+}
 
     class Program
     {
-        static void duplica(ref int x)
-        {
-            x = x * 2;
-        }
-        static int suma(int x,int y)
-        {
-            return x + y;
-        }
-         static void suma(int x,int y,out int resultado)
-        {
-            resultado = x + y;
-        }
+         static void division(int n1,int n2,out int r){
+     r = n1/n2;
+
+    }
+    static int division(int n1,int n2)
+    {
+        return n1/n2;
+    }
+
         static void Main(string[] args)
         {
-            int a=2;
-            int b=3;
-            int r=suma(a,b);
-            int r2;
-            suma(a,b,out r2);
+        /*Uso de ref con multiplicacion  */
+       Multiplicar m = new Multiplicar();
+       int x = 4;
+       m.multi(ref x);
+       Console.WriteLine(x);
 
+       /*Uso de out con division*/
+       int y=2;
+       int z=2;
+       int r;
+       division(y,z,out r);
+       Console.WriteLine(division(y,z));
 
-            //duplica(ref a);
-            Console.WriteLine(r2);
-       /*  Persona p =new Persona();
-        Console.WriteLine(p.nombre);
-        Anonymous.anonimiza(p);
-        Anonymous.cambia(ref p);
-        Console.WriteLine(p.nombre);*/
-        
+       /*Uso de in con resta*/
+       resta res = new resta();
+        int i=10;
+        i=i-8;
+        res.re(in i);
+        Console.WriteLine(i);
         }
     }
 
