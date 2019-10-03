@@ -3,7 +3,7 @@ using System.Collections.Generic;
 
 namespace gol
 {
-    enum Estado{viva, muerta}
+    enum Estado{viva, vacia}
 
     class Celula{
         public bool estado_actual;
@@ -23,6 +23,26 @@ namespace gol
 
     class Tablero{
         private list <list<Celula>> grid;
+        public Tablero()
+        {
+            grid=new list<list<Celula>>();
+            grid.Add(new list<Celula>());
+            grid[0].Add(new Celula(Estado.viva,this,0,0));
+            grid[0].Add(new Celula(Estado.vacia,this,0,1));
+            grid[0].Add(new Celula(Estado.vacia,this,0,3));
+
+              grid=new list<list<Celula>>();
+            grid.Add(new list<Celula>());
+            grid[0].Add(new Celula(Estado.vacia,this,1,0));
+            grid[0].Add(new Celula(Estado.vacia,this,1,1));
+            grid[0].Add(new Celula(Estado.viva,this,1,3));
+
+              grid=new list<list<Celula>>();
+            grid.Add(new list<Celula>());
+            grid[0].Add(new Celula(Estado.vacia,this,2,0));
+            grid[0].Add(new Celula(Estado.vacia,this,2,1));
+            grid[0].Add(new Celula(Estado.viva,this,2,3));
+        }
     }
 
     class Program
@@ -31,6 +51,9 @@ namespace gol
         {
             Console.WriteLine("▒▒▒▒▒▒▒");
             Console.WriteLine("▒▒▒▒▒▒▒");
+            Console.WriteLine("▒▒▒▒▒▒▒");
+            
+    
         }
     }
 }
