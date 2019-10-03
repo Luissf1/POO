@@ -55,6 +55,16 @@ namespace gol
             grid[0].Add(new Celula(Estado.vacia,this,2,1));
             grid[0].Add(new Celula(Estado.viva,this,2,3));
         }
+        public void print()
+        {
+            foreach(list<Celula>renglon in grid)
+            {
+                foreach(Celula c in renglon )
+                  c.print();
+                Console.WriteLine();
+            }
+              
+        }
     }
 
     class Program
@@ -62,7 +72,7 @@ namespace gol
         static void Main(string[] args)
         {
          Tablero gol=new Tablero();
-         
+         gol.print();
         }
     }
 }
