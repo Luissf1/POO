@@ -19,6 +19,18 @@ namespace gol
             this.renglon = renglon;
             this.columna = columna;
         }
+        public void print()
+        {
+            if(this.estado_actual==Estado.vacia
+            {
+            Console.WriteLine("▒");
+            }
+            else if (this.estado_actual== Estado.viva)
+            {
+            Console.WriteLine("▓");
+            }
+ 
+        }
     }
 
     class Tablero{
@@ -49,11 +61,8 @@ namespace gol
     {
         static void Main(string[] args)
         {
-            Console.WriteLine("▒▒▒▒▒▒▒");
-            Console.WriteLine("▒▒▒▒▒▒▒");
-            Console.WriteLine("▒▒▒▒▒▒▒");
-            
-    
+         Tablero gol=new Tablero();
+         
         }
     }
 }
