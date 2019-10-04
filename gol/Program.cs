@@ -49,6 +49,13 @@ namespace gol
             
      
         }
+
+        public void inserta(Celula c)
+        {
+         grid[c.renglon ][c.columna] = c;
+        }
+
+        
         public void print()
         {
             foreach(list<Celula>renglon in grid)
@@ -66,6 +73,10 @@ namespace gol
         static void Main(string[] args)
         {
          Tablero gol=new Tablero(40,40);
+         gol.inserta(new Celula(Estado.viva,gol,3,3));
+         gol.inserta(new Celula(Estado.viva,gol,3,2));
+         gol.inserta(new Celula(Estado.viva,gol,3,1));
+         gol.inserta(new Celula(Estado.viva,gol,0,0));
          gol.print();
         }
     }
