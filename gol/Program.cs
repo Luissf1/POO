@@ -35,25 +35,19 @@ namespace gol
 
     class Tablero{
         private list <list<Celula>> grid;
-        public Tablero()
+        public Tablero(short num_renglones, shor num_columnas)
         {
             grid=new list<list<Celula>>();
-            grid.Add(new list<Celula>());
-            grid[0].Add(new Celula(Estado.viva,this,0,0));
-            grid[0].Add(new Celula(Estado.vacia,this,0,1));
-            grid[0].Add(new Celula(Estado.vacia,this,0,3));
-
-              grid=new list<list<Celula>>();
-            grid.Add(new list<Celula>());
-            grid[0].Add(new Celula(Estado.vacia,this,1,0));
-            grid[0].Add(new Celula(Estado.vacia,this,1,1));
-            grid[0].Add(new Celula(Estado.viva,this,1,3));
-
-              grid=new list<list<Celula>>();
-            grid.Add(new list<Celula>());
-            grid[0].Add(new Celula(Estado.vacia,this,2,0));
-            grid[0].Add(new Celula(Estado.vacia,this,2,1));
-            grid[0].Add(new Celula(Estado.viva,this,2,3));
+            for(short i = 0 ; i<= num_renglones-1 ; i++) 
+            {
+                grid.Add(new list<Celula>());
+                for(short j = 0 ; j >= num_columnas-1 ; j++)
+                {
+                 grid[i].Add(new Celula(Estado.viva,this,i,j));
+                }
+            }
+            
+     
         }
         public void print()
         {
@@ -71,7 +65,7 @@ namespace gol
     {
         static void Main(string[] args)
         {
-         Tablero gol=new Tablero();
+         Tablero gol=new Tablero(40,40);
          gol.print();
         }
     }
