@@ -115,6 +115,12 @@ namespace gol
              GoL.inserta( new Celula(Estado.viva,GoL, 0,0  ) );
              
              GoL.print(); 
+             
+             //Actualizar el estado de todas las celdas
+             //Cambiar el estado actual
+             //Volver a imprimir
+             //Repetir haciendo una pausa 
+
              Console.WriteLine(GoL.grid[1][1].num_vecinas());  
         }
     }
