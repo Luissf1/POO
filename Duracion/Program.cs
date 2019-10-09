@@ -40,17 +40,18 @@ namespace Duracion
     {
         return this.segundo;
     }
+ 
 
-   public void Duracion(Int16 horas,Int16 minutos,Int16 segundos)
+
+   public  Duracion(Int16 horas,Int16 minutos,Int16 segundo)
    {
      this.horas=horas; 
      this.minutos=minutos; 
      this.segundo=segundo;
    }
+  
     
- }
-
-
+}
 
     class Program
     {
@@ -64,7 +65,7 @@ namespace Duracion
             M.SetMinutos(0);
             H.SetHoras(2);
            
-           Console.WriteLine("asd");
+           Console.WriteLine("(0)(1)(2)",S.SetSegundo,M.SetMinutos,H.SetHoras);
             
         }
     }
