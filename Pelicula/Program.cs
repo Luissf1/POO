@@ -6,7 +6,7 @@ namespace Pelicula
  
   class Actor
   {
-      public string nombre;
+      public String nombre;
       public Int16 año;
       public Actor(String nombre,Int16 año)
       {
