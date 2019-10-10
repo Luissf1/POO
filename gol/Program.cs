@@ -28,22 +28,73 @@ namespace gol
         public void actualiza_estado_siguiente(){
         //Actualiza estado_siguiente
         //Siguiendo las reglas del juego
-
         //Ejemplo
-        if(num_vecinas() == 0)
+        /*if(num_vecinas() == 0)
         {
             estado_siguiente=Estado.viva;
+        }*/
+        short vecina=num_vecinas();
+
+        //Regla 1
+        if(estado_actual == Estado.viva &&(vecina < 2))
+        {
+          estado_siguiente=Estado.vacia;
         }
+        //Regla 2
+         if(estado_actual == Estado.viva && (vecina <=3 || vecina >= 2) )
+        {
+          estado_siguiente=Estado.viva;
+        }
+
+        //Regla 3
+        if(estado_actual == Estado.viva && (vecina <3 ))
+        {
+          estado_siguiente=Estado.vacia;
+        }
+        //Regla 4
+        if(estado_actual == Estado.vacia &&(vecina == 3 ))
+        {
+          estado_siguiente=Estado.viva;
+        }
+        
+
         }
 
         public short num_vecinas()
-        {   short cuenta = 0;
-            // 1 
+        {   
+            short cuenta = 0;
+
+           
             if (renglon > 0  && columna > 0)
                 {
-                  if(  tablero.grid[renglon-1][columna-1].estado_actual == Estado.viva)
+                    //Columna de atras
+                      if(  tablero.grid[renglon-1][columna-1].estado_actual == Estado.viva)
                       cuenta++;
+
+                      if( tablero.grid[renglon+1][columna-1].estado_actual == Estado.viva)
+                      cuenta++;
+
+                     if(  tablero.grid[renglon][columna-1].estado_actual == Estado.viva)
+                      cuenta++;
+                  //Columna adelante
+                      if( tablero.grid[renglon-1][columna+1].estado_actual == Estado.viva)
+                      cuenta++;
+
+                     if(  tablero.grid[renglon+1][columna+1].estado_actual == Estado.viva)
+                      cuenta++;
+
+                     if(  tablero.grid[renglon][columna+1].estado_actual == Estado.viva)
+                      cuenta++;
+
+                //Columna de adelante
+                     if(  tablero.grid[renglon-1][columna].estado_actual == Estado.viva)
+                      cuenta++;
+
+                      if(  tablero.grid[renglon+1][columna].estado_actual == Estado.viva)
+                      cuenta++;
+                 
                 }
+              
             //falta hacer lo mismo en las otras vecinas
 
             return cuenta;
@@ -59,11 +110,14 @@ namespace gol
            }
             
         }
+        
     }
 
     class Tablero {
         public List<List<Celula >> grid;
-        public Tablero(short num_renglones, short num_columnas){
+
+        public Tablero(short num_renglones, short num_columnas)
+        {
               grid = new List<List<Celula>>(); 
               for (short i=0; i<= num_renglones-1; i++)
               {
@@ -72,6 +126,7 @@ namespace gol
                  {
                     grid[i].Add(new Celula(Estado.vacia, this, i,j));
                  }
+               
               }
 
         }
@@ -86,12 +141,27 @@ namespace gol
                 }         
             }   
        }
+       public void Avance_turno(){
+			foreach(List<Celula> renglon in grid)
+			{
+				foreach(Celula c in renglon)
+				{
+					c.actualiza_estado_siguiente();
+				}
+			}
+		}
+ 
        //Cambia el estado de todas las celdas
        
         public void inserta(Celula c){
-                grid[c.renglon][c.columna] = c;
+            if((c.renglon >= 0 ) && (c.columna >= 0 ))
+            {
+            grid[c.renglon][c.columna] = c;
+            }
+               
         }
-
+        
+        
         public void print(){
             foreach(List<Celula> renglon in grid)
             {
@@ -109,19 +179,45 @@ namespace gol
         static void Main(string[] args)
         {
              Tablero GoL = new Tablero(10,5);
+             
+             
              GoL.inserta( new Celula(Estado.viva,GoL, 3,3  ) );
              GoL.inserta( new Celula(Estado.viva,GoL, 3,2  ) );
              GoL.inserta( new Celula(Estado.viva,GoL, 3,1  ) );
              GoL.inserta( new Celula(Estado.viva,GoL, 0,0  ) );
              
-             GoL.print(); 
+             
+             int CaseSwitch;
+             Console.WriteLine("1.Iniciar juego\n2.Siguiente etapa\n3.Finalizar");
+            CaseSwitch=Convert.ToInt16(Console.ReadLine());
+             switch(CaseSwitch)
+             {
+                 case 1:
+                 GoL.print(); 
+                 GoL.actualiza_estado_todas();
+                 Console.WriteLine(GoL.grid[1][1].num_vecinas()); 
+                 break;
+                 case 2:
+                 GoL.actualiza_estado_todas();
+                 GoL.print(); 
+                 GoL.Avance_turno();
+                 Console.WriteLine(GoL.grid[1][1].num_vecinas()); 
+                 break;
+                 case 3:
+                 Console.WriteLine("Finalizado");
+                 break ;
+  
+             }
              
              //Actualizar el estado de todas las celdas
              //Cambiar el estado actual
              //Volver a imprimir
              //Repetir haciendo una pausa 
-
-             Console.WriteLine(GoL.grid[1][1].num_vecinas());  
+            
+            
+					
+				
+             
         }
     }
 }
