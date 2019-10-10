@@ -19,7 +19,6 @@ namespace Duracion
     }
 
 
-
     public void SetMinutos (Int16 minutos)
     {
         
@@ -41,31 +40,20 @@ namespace Duracion
         return this.segundo;
     }
  
-
-
-   public  Duracion(Int16 horas,Int16 minutos,Int16 segundo)
-   {
-     this.horas=horas; 
-     this.minutos=minutos; 
-     this.segundo=segundo;
-   }
-  
-    
 }
 
     class Program
     {
         static void Main()
         {
-            Duracion S=new Duracion();
-            Duracion M=new Duracion();
-            Duracion H=new Duracion();
+            Duracion D1 =new Duracion();
 
-            S.SetSegundo(2);
-            M.SetMinutos(0);
-            H.SetHoras(2);
-           
-           Console.WriteLine("(0)(1)(2)",S.SetSegundo,M.SetMinutos,H.SetHoras);
+            
+            D1.SetHoras(2);
+            D1.SetMinutos(15);
+            D1.SetSegundo(2);
+            Console.WriteLine("La duracion es de: " );
+            Console.WriteLine("{0}:{1}:{2}", D1.GetHoras(), D1.GetMinutos(),D1.GetSegundo());
             
         }
     }
