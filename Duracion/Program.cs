@@ -50,6 +50,12 @@ namespace Duracion
    {
 
    }
+
+   public Duracion(int segundo)
+   {
+       this.segundo=segundo;
+   }
+
    public void Conversion()
    {
    int ConvM=horas*60;
@@ -58,8 +64,15 @@ namespace Duracion
     int ConvS=horas*360;
     Console.WriteLine("La duracion en segundos es: " );
     Console.WriteLine("{0}",ConvS);
-
    }
+
+   public void ConversionHMS()
+   {
+   
+   }
+   
+   
+
 
 }
 
@@ -68,13 +81,24 @@ namespace Duracion
         static void Main()
         {
             Duracion D1 =new Duracion();
+            Duracion D2 =new Duracion();
 
             D1.SetHoras(2);
             D1.SetMinutos(15);
             D1.SetSegundo(2);
-            Console.WriteLine("La duracion es de: " );
+            Console.WriteLine("La duracion 1 es de: " );
             Console.WriteLine("{0}:{1}:{2}", D1.GetHoras(), D1.GetMinutos(),D1.GetSegundo());
             D1.Conversion();
+
+            D2.SetHoras(2);
+            D2.SetMinutos(15);
+            D2.SetSegundo(2);
+            Console.WriteLine("La duracion 2 es de: " );
+            Console.WriteLine("{0}:{1}:{2}", D2.GetHoras(), D2.GetMinutos(),D2.GetSegundo());
+            D2.Conversion();
+
+           
+            
             
             
         }

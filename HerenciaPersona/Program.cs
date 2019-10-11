@@ -37,6 +37,8 @@ namespace HerenciaPersona
          this.num_control=num_control;
      }
      
+     
+     
 
     }
 
