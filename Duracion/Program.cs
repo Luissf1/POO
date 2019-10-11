@@ -5,41 +5,62 @@ namespace Duracion
     
     class Duracion
     {
-    private Int16 horas;
-    private Int16 minutos;
-    private Int16 segundo;
+    private int horas;
+    private int minutos;
+    private int segundo;
+   
     
-    public void SetHoras(Int16 horas)
+    
+    public void SetHoras(int horas)
     {
         this.horas=horas;
     }
-    public Int16 GetHoras()
+    public int GetHoras()
     {
         return this.horas;
     }
 
 
-    public void SetMinutos (Int16 minutos)
+    public void SetMinutos (int minutos)
     {
         
         this.minutos=minutos;
     }
-    public Int16 GetMinutos()
+    public int GetMinutos()
     {
         return this.minutos;
     }
-
-
-    public void SetSegundo (Int16 segundo)
+    public void SetSegundo (int segundo)
     {
         
         this.segundo=segundo;
     }
-    public Int16 GetSegundo()
+    public int GetSegundo()
     {
         return this.segundo;
     }
- 
+    public Duracion(int horas,int minutos,int segundo)
+    {
+       this.horas=horas;
+       this.minutos=minutos;
+       this.segundo=segundo;
+    }
+  
+   public Duracion()
+   {
+
+   }
+   public void Conversion()
+   {
+   int ConvM=horas*60;
+    Console.WriteLine("La duracion en minutos es: " );
+    Console.WriteLine("{0}",ConvM);
+    int ConvS=horas*360;
+    Console.WriteLine("La duracion en segundos es: " );
+    Console.WriteLine("{0}",ConvS);
+
+   }
+
 }
 
     class Program
@@ -48,12 +69,13 @@ namespace Duracion
         {
             Duracion D1 =new Duracion();
 
-            
             D1.SetHoras(2);
             D1.SetMinutos(15);
             D1.SetSegundo(2);
             Console.WriteLine("La duracion es de: " );
             Console.WriteLine("{0}:{1}:{2}", D1.GetHoras(), D1.GetMinutos(),D1.GetSegundo());
+            D1.Conversion();
+            
             
         }
     }
