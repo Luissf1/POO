@@ -9,9 +9,8 @@ namespace HerenciaPersona
      protected string _nombre;
 
      private string Nombre
-     {get
-
-     {return _nombre;}
+     {
+         get {return _nombre;}
      }
 
      public Persona(string n)
@@ -42,7 +41,6 @@ namespace HerenciaPersona
 
     }
 
-    
     class Program
     {
         static void Main()
@@ -56,6 +54,7 @@ namespace HerenciaPersona
 
          Alumno Luis=new Alumno("Luis","1921059");
          Luis.Print();
+         
         }
     }
 }
