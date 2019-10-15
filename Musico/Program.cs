@@ -14,7 +14,7 @@ namespace Musico
         nombre=n;
 
         }
-        public string Saludo()
+        public virtual string Saludo()
         {
         return String.Format("Hola,soy {0}",nombre);
         }
