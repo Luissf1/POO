@@ -39,7 +39,10 @@ namespace Musico
            Console.WriteLine("{0} esta afinando su bajo {1}",nombre,bajo);
        }
 
-       
+       public override string Saludo()
+       {
+           return base.Saluda()+"y soy bajista";
+       }
 
        /*  class Guitarista:Musico
        {
