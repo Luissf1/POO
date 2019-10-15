@@ -65,6 +65,21 @@ namespace Musico
           }
 
     }
+
+    class Vocalista:Musico
+    {
+     private string voz;
+     public Vocalista(string no,string voz):base(no)
+     {
+         this.voz=voz;
+     }
+
+     public override void Afina()
+     {
+        Console.WriteLine("{0} esta afinando su {1}",nombre,voz); 
+     }
+
+    }
     class Program
     { 
 
@@ -73,7 +88,8 @@ namespace Musico
             Musico tom=new Musico("Tom");
             Bajista flea=new Bajista("Flea","Gibson");
             Guitarista jeff=new Guitarista("Jeff","Fender");
-            
+            Vocalista chad=new Vocalista("Chad","Voz");
+
             Console.WriteLine(tom.Saludo());
             Console.WriteLine(flea.Saludo());
 
@@ -84,6 +100,7 @@ namespace Musico
             grupo.Add(tom);
             grupo.Add(flea);
             grupo.Add(jeff);
+            grupo.Add(chad);
             foreach(Musico m in grupo)
             {
                 Console.WriteLine(m.Saludo());
