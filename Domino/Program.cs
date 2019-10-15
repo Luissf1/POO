@@ -2,7 +2,8 @@
 
 namespace Domino
 {
-    class Domino{
+    class Domino
+    {
         public int a;
         public int b;
 

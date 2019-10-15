@@ -24,3 +24,11 @@
 ### 3) [Auto](./practica/Program.cs)
 
 ### 4) [Espias](./espias/Program.cs)
+
+### 5) [Domino](./Domino/Program.cs)
+
+### 6) [Duracion](./Duracion/Program.cs)
+
+### 7) [HerenciaPersona](./HerenciaPersona/Program.cs)
+
+### 8) [Musico](./Musico/Program.cs)
