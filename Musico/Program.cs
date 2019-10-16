@@ -44,10 +44,10 @@ namespace Musico
         return string.Format("Hola,soy {0}",nombre);
         }
 
-       /*public override string Saludo()
+      /*  public override string Saludo()
        {
            return base.Saluda()+"y soy bajista";
-       }*/
+       } */
 
        
     }
