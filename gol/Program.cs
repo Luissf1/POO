@@ -68,39 +68,48 @@ namespace gol
             if (renglon > 0  && columna > 0)
                 {
                     //Columna de atras
-                      if(  tablero.grid[renglon-1][columna-1].estado_actual == Estado.viva)
-                      cuenta++;
-
-                      if( tablero.grid[renglon+1][columna-1].estado_actual == Estado.viva)
-                      cuenta++;
-
-                     if(  tablero.grid[renglon][columna-1].estado_actual == Estado.viva)
-                      cuenta++;
+                      if(  tablero.condicion(renglon-1,columna-1) && tablero.Ubicacion_Celula (renglon-1,columna-1) == Estado.viva)
+                      {
+                          cuenta++; 
+                      }
+                      if(  tablero.condicion(renglon+1,columna-1) && tablero.Ubicacion_Celula (renglon+1,columna-1) == Estado.viva)
+                      {
+                          cuenta++; 
+                      }
+                      if(  tablero.condicion(renglon,columna-1) && tablero.Ubicacion_Celula (renglon,columna-1) == Estado.viva)
+                      {
+                          cuenta++; 
+                      }
                   //Columna adelante
-                      if( tablero.grid[renglon-1][columna+1].estado_actual == Estado.viva)
-                      cuenta++;
-
-                     if(  tablero.grid[renglon+1][columna+1].estado_actual == Estado.viva)
-                      cuenta++;
-
-                     if(  tablero.grid[renglon][columna+1].estado_actual == Estado.viva)
-                      cuenta++;
-
+                      if(  tablero.condicion(renglon-1,columna+1) && tablero.Ubicacion_Celula (renglon-1,columna+1) == Estado.viva)
+                      {
+                          cuenta++; 
+                      }
+                      if(  tablero.condicion(renglon+1,columna+1) && tablero.Ubicacion_Celula (renglon+1,columna+1) == Estado.viva)
+                      {
+                          cuenta++; 
+                      }
+                     if(  tablero.condicion(renglon,columna+1) && tablero.Ubicacion_Celula (renglon,columna+1) == Estado.viva)
+                      {
+                          cuenta++; 
+                      }
                 //Columna de adelante
-                     if(  tablero.grid[renglon-1][columna].estado_actual == Estado.viva)
-                      cuenta++;
-
-                      if(  tablero.grid[renglon+1][columna].estado_actual == Estado.viva)
-                      cuenta++;
-                 
+                     if(  tablero.condicion(renglon-1,columna) && tablero.Ubicacion_Celula (renglon-1,columna) == Estado.viva)
+                     {
+                          cuenta++; 
+                      }
+                     if(  tablero.condicion(renglon+1,columna) && tablero.Ubicacion_Celula (renglon+1,columna) == Estado.viva)
+                     {
+                          cuenta++; 
+                      }                 
                 }
               
             //falta hacer lo mismo en las otras vecinas
 
             return cuenta;
-        } 
+        }  
 
-        public void print(){
+           public void print(){
            if (this.estado_actual == Estado.vacia){
                 Console.Write("▒");
            } 
@@ -115,9 +124,14 @@ namespace gol
 
     class Tablero {
         public List<List<Celula >> grid;
+        public short num_columnas;
+        public short num_renglones;
+
 
         public Tablero(short num_renglones, short num_columnas)
-        {
+        {     
+            this.num_columnas=num_columnas;
+            this.num_renglones=num_renglones;
               grid = new List<List<Celula>>(); 
               for (short i=0; i<= num_renglones-1; i++)
               {
@@ -147,10 +161,32 @@ namespace gol
 				foreach(Celula c in renglon)
 				{
 					c.actualiza_estado_siguiente();
+                    
 				}
 			}
+            
+            
 		}
- 
+        
+
+        public bool condicion(int renglon, int columna) 
+        {
+            if((renglon < 0 || renglon >= num_renglones) || (columna < 0 || columna >= num_columnas)) 
+            {
+                return false;
+            } else 
+            {
+                return true;
+            }
+        }
+
+
+        public Estado Ubicacion_Celula(int renglon, int columna) 
+        {
+            return grid[renglon][columna].estado_actual;
+        }
+
+
        //Cambia el estado de todas las celdas
        
         public void inserta(Celula c){
@@ -169,8 +205,9 @@ namespace gol
                {
                     c.print();
                 }         
-                Console.WriteLine("");
-            }                  
+                Console.WriteLine("\n");   
+            }          
+             Console.WriteLine("");        
         } 
     }
     
@@ -185,29 +222,38 @@ namespace gol
              GoL.inserta( new Celula(Estado.viva,GoL, 3,2  ) );
              GoL.inserta( new Celula(Estado.viva,GoL, 3,1  ) );
              GoL.inserta( new Celula(Estado.viva,GoL, 0,0  ) );
-             
-             
+            
+
              int CaseSwitch;
-             Console.WriteLine("1.Iniciar juego\n2.Siguiente etapa\n3.Finalizar");
+             do{
+             Console.WriteLine("1.Pocision inicial \n2.Inicializar etapas\n3.Finalizar");
             CaseSwitch=Convert.ToInt16(Console.ReadLine());
              switch(CaseSwitch)
              {
-                 case 1:
-                 GoL.print(); 
+               
+                case 1:
+                 GoL.print();
                  GoL.actualiza_estado_todas();
                  Console.WriteLine(GoL.grid[1][1].num_vecinas()); 
                  break;
                  case 2:
+                 for(int i = 0; i < 5; i++) 
+                {
+                 GoL.print();
                  GoL.actualiza_estado_todas();
-                 GoL.print(); 
-                 GoL.Avance_turno();
-                 Console.WriteLine(GoL.grid[1][1].num_vecinas()); 
+                 GoL.Avance_turno(); 
+                 System.Threading.Thread.Sleep(350);
+                 } 
                  break;
                  case 3:
                  Console.WriteLine("Finalizado");
                  break ;
-  
+
              }
+             }
+             while(CaseSwitch!=3);  
+                            
+           
              
              //Actualizar el estado de todas las celdas
              //Cambiar el estado actual
