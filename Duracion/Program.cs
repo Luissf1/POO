@@ -5,14 +5,14 @@ namespace Duracion
     
     class Duracion
     {
+    //Atributos
     private int horas;
     private int minutos;
     private int segundo;
-    
     private int segundo2;
    
     
-    
+    //Para poder mandar los atributos privados
     public void SetHoras(int horas)
     {
         this.horas=horas;
@@ -21,8 +21,6 @@ namespace Duracion
     {
         return this.horas;
     }
-
-
     public void SetMinutos (int minutos)
     {
         
@@ -51,6 +49,8 @@ namespace Duracion
         return this.segundo2;
     }
     
+
+    //Sobre carga
     public Duracion(int horas,int minutos,int segundo,int segundo2)
     {
        this.horas=horas;
@@ -58,12 +58,12 @@ namespace Duracion
        this.segundo=segundo;
        this.segundo2=segundo2;
     }
-  
+     //Sobre carga
    public Duracion()
    {
 
    }
-
+  //Sobre carga(solo segundos)
    public Duracion(int segundo)
    {
        this.segundo=segundo;
@@ -94,12 +94,13 @@ namespace Duracion
         Console.WriteLine("{0}:{1}:{2}",tiempoh,tiempom,tiempos);
    }
    
-   public void SumaD()//Suma de duracion 1 y 2
-   {
-       
-   }
+     //Sobre carga de operador
+        public static int operator +(Duracion D3 ,Duracion D4){
+            
+             return  ((D3.horas+D4.horas)*3600)+((D3.minutos+D4.minutos)*60)+(D3.segundo+D4.segundo);
+            
+        }
    
-
 
 }
 
@@ -107,29 +108,37 @@ namespace Duracion
     {
         static void Main()
         {
-            
+            //Objetos duracion
             Duracion D1 =new Duracion();
             Duracion D2 =new Duracion();
-            
+
+
+
+            //Duracion 1 
             D1.SetHoras(2);
             D1.SetMinutos(15);
             D1.SetSegundo(23);
             D1.SetSegundo2(6564);
             Console.WriteLine("La duracion 1 es de: " );
             Console.WriteLine("{0}:{1}:{2}", D1.GetHoras(), D1.GetMinutos(),D1.GetSegundo());
+            //Conversion de duracion 1
             D1.Conversion();
             D1.ConversionHMS();
-
+            
+            //Duracion 2
             D2.SetHoras(3);
             D2.SetMinutos(12);
             D2.SetSegundo(43);
             D2.SetSegundo2(3264);
             Console.WriteLine("La duracion 2 es de: " );
             Console.WriteLine("{0}:{1}:{2}", D2.GetHoras(), D2.GetMinutos(),D2.GetSegundo());
+            //COnversion de duracion 2
             D2.Conversion();
             D2.ConversionHMS();
            
-           
+           //Suma de duracion en segundos
+            Console.WriteLine("La suma de las duraciones es:");
+            Console.WriteLine(D1+D2);
             
             
             

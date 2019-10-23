@@ -14,6 +14,12 @@
 
 ### 6)[Paso de parámetros](./Paso/Program.cs)
 
+### 7)Sobrecargado de Operadores, ejercicios en clase
+
+### a)[Duracion](./Duracion/Program.cs)
+
+### b)[Domino](./Domino/Program.cs)
+
 # Practicas
 ### 1) [Hola Tec](./P1/Program.cs)
 
