@@ -20,6 +20,12 @@
 
 ### b)[Domino](./Domino/Program.cs)
 
+### 8)Herencia
+
+### a)[Alumnos](./Alumnos/Program.cs)
+
+### b)[Musicos](./Musicos/Program.cs)
+
 # Practicas
 ### 1) [Hola Tec](./P1/Program.cs)
 
