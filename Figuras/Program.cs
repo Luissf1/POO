@@ -44,7 +44,7 @@ namespace Figuras
         static void Main()
         {
             List<Figuras> f =new List<Figuras>();
-          Figuras.Add(new Rectangulo(10,10));
+             Figuras.Add(new Rectangulo(10,10));
 
         }
     }
