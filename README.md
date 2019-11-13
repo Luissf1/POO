@@ -44,3 +44,11 @@
 ### 7) [HerenciaPersona](./HerenciaPersona/Program.cs)
 
 ### 8) [Musico](./Musico/Program.cs)
+
+### 9) [FaceClon](./FaceClon/Program.cs)
+
+### 10) [Icomparable](./Icomparable/Program.cs)
+
+### 11) [Interfaz_pen](./Interfaz_pen/Program.cs)
+
+### 12) [exepciones](./exepciones/Program.cs)
