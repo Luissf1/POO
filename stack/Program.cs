@@ -9,7 +9,8 @@ namespace stack
      private int apuntador_pila=0;
 
      public Stack():this(100)
-     {     }
+     {
+     }
 
 
      public Stack(int size)
@@ -42,15 +43,11 @@ namespace stack
             nombres.Push("Mundo");
             nombres.Push(" ");
             nombres.Push("Hola");
-            
-            nombres.Push("Mundo");
-            nombres.Push(" ");
-            nombres.Push("Hola");
 
             string nombre=nombres.Pop();
-            Console.Write(nombre);
             Console.Write(nombres.Pop());
             Console.Write(nombres.Pop());
+            //Console.Write(nombres.Pop());
             //Console.Write(nombres.Pop());
         }
     }
