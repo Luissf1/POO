@@ -44,11 +44,11 @@ namespace stack
             nombres.Push(" ");
             nombres.Push("Hola");
 
-            string nombre=nombres.Pop();
+            //string nombre=nombres.Pop();
             Console.Write(nombres.Pop());
             Console.Write(nombres.Pop());
-            //Console.Write(nombres.Pop());
-            //Console.Write(nombres.Pop());
+            Console.Write(nombres.Pop());
+            
         }
     }
 }

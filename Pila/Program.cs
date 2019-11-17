@@ -6,9 +6,12 @@ namespace Pila
     public class Pila<T>/*T es de tipo */
     {
     readonly int tamaño;
-    int apuntador=0;
-    T[] elementos;
+    private int apuntador=0;
+    private T[] elementos;
 
+public Pila():this(100)
+{
+}
     public Pila(int size)
     {
         tamaño=size;
@@ -16,11 +19,11 @@ namespace Pila
     }
     
 
-    public void Push(T elementos)
+    public void Push(T elemento)
     {
         if(apuntador<tamaño)
         {
-        elementos[apuntador]=elementos;
+        elementos[apuntador]=elemento;
         apuntador++;
         }
         else
@@ -43,7 +46,17 @@ namespace Pila
     {
         static void Main(string[] args)
         {
-            Console.WriteLine("Hello World!");
+
+            Pila<string>apellidos=new Pila<string>(4);
+                       
+            apellidos.Push("Reyes");
+            apellidos.Push("  ");
+            apellidos.Push("Silva");
+
+          
+            Console.Write(apellidos.Pop());
+            Console.Write(apellidos.Pop());
+            Console.Write(apellidos.Pop());
         }
     }
 }
