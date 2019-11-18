@@ -28,9 +28,11 @@
 
 ### b)[Musicos](./Musicos/Program.cs)
 
-### 8)Generics
+### 9)Generics
 
 ### a)[Stack](./StackInt/Progrmas.cs)
+
+### b)Cola
 
 ## Practicas
 
