@@ -30,7 +30,7 @@
 
 ### 9)Generics
 
-### a)[Stack](./StackInt/Progrmas.cs)
+### a)[Stack](./StackInt/Programs.cs)
 
 ### b)Cola
 
