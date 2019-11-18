@@ -1,6 +1,8 @@
 # POO
-### Curso de POO del TEC
-# Tareas
+
+## Curso de POO del TEC
+
+## Tareas
 
 ### 1)Crear Repositorio en Github
 
@@ -26,7 +28,12 @@
 
 ### b)[Musicos](./Musicos/Program.cs)
 
-# Practicas
+### 8)Generics
+
+### a)[Stack](./StackInt/Progrmas.cs)
+
+## Practicas
+
 ### 1) [Hola Tec](./P1/Program.cs)
 
 ### 2) [Bici1](./Bici/Program.cs)

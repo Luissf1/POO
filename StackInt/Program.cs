@@ -52,7 +52,7 @@ namespace StackInt
          }
          else{
              apuntador_pila=0;
-             throw new InvalidOperationException("Error stack contiene espacios vacios");
+             throw new InvalidOperationException("Error stack contiene espacio vacio");
          }
      }
 
