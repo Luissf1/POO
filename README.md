@@ -32,7 +32,7 @@
 
 ### a)[Stack](./StackInt/Program.cs)
 
-### b)Cola
+### b)[Cola](./Cola/Program.cs)
 
 ## Practicas
 
