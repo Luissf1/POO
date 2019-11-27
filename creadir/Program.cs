@@ -30,7 +30,7 @@ namespace creadir
        BinaryWriter binOut=new BinaryWriter(fs);
        foreach(Producto p in productos)
        {
-           binOut.Write(p.codigo);
+           binOut.Write(p.code);
            binOut.Write(p.descripcion);
            binOut.Write(p.precio);
 
@@ -57,7 +57,9 @@ namespace creadir
 
      public static List<Producto> LeeProductosTXT(string archivo)
      {
-         List<Producto> productos =new List<Producto>();
+        List<Producto> productos =new List<Producto>();
+        FileStream fs=new FileStream(archivo,FileMode.Open,FileAccess.Read);
+
         using(StreamReader sr=new StreamReader(archivo))//se utiliza using para no utilizar el close
         {
            string line ="";
@@ -80,10 +82,10 @@ namespace creadir
             while(binIN.PeekChar() != -1 )//No lleguemos al final del archivo
            {
                Producto producto =new Producto();
-               producto.codigo=binIN.ReadString();
+               producto.code=binIN.ReadString();
                producto.descripcion=binIN.ReadString();
                producto.precio=binIN.ReadDouble();
-               
+
                productos.Add(producto);
             }
         }
