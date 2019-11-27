@@ -20,7 +20,26 @@ namespace creadir
 
     class ProductoArchivo
     {
-     public static void EscribeProductos(string archivo,List<Producto> productos)
+     public static void EscribeProductosBIN(string archivo,List<Producto> productos)
+     {
+       FileStream fs=new FileStream(archivo,FileMode.OpenOrCreate,FileAccess.Write);
+       BinaryWriter binOut=new BinaryWriter(fs);
+       foreach(Producto p in productos)
+       {
+           binOut.Write(p.codigo);
+           binOut.Write(p.descripcion);
+           binOut.Write(p.precio);
+
+       }
+
+
+
+       
+     }
+
+
+
+     public static void EscribeProductosTXT(string archivo,List<Producto> productos)
      {
         FileStream fs=new FileStream(archivo,FileMode.OpenOrCreate,FileAccess.Write);
         StreamWriter txtout =new StreamWriter(fs);
@@ -31,6 +50,24 @@ namespace creadir
           }
             txtout.Close();
      }
+ 
+
+
+     public static List<Producto> LeeProductosTXT(string archivo)
+     {
+        using(StreamReader sr=new StreamReader(archivo))//se utiliza using para no utilizar el close
+        {
+           string line ="";
+            while((line= sr.ReadLine()) != null )//No lleguemos al final del archivo
+           {
+                  
+               string[] columnas=line.Split("|");
+               //Console.WriteLine(columnas[0]);
+                productos.Add(new Producto(columnas[0],columnas[1],Double.Parse(columnas[2])));
+            }
+        }
+     }
+
     }
 
 
@@ -45,32 +82,28 @@ namespace creadir
             productos.Add(new Producto("Bic","Pluma verde",12.23d));
             productos.Add(new Producto("Bic","Pluma negra",12.23d));
 
-            ProductoArchivo.EscribeProductos(@"productos.tx");
+            ProductoArchivo.EscribeProductosTXT(@"productos.txt",productos);
             
            
             Console.WriteLine("Archivo grabado");
+            Console.ReadKey();
 
-            List<Producto> productos_leidos =new List<Producto>();
 
-           
+            List<Producto> productos_leidos =ProductoArchivo.LeeProductosTXT("productos.txt");
 
-            using(StreamReader sr=new StreamReader(@"productos.tx"))//se utiliza using para no utilizar el close
-            {
-              string line ="";
-              while((line= sr.ReadLine()) != null )//No lleguemos al final del archivo
-              {
-                  
-                  string[] columnas=line.Split("|");
-                  //Console.WriteLine(columnas[0]);
-                  productos_leidos.Add(new Producto(columnas[0],columnas[1],Double.Parse(columnas[2])));
-              }
-            }
+            
 
             
             foreach(Producto p in productos_leidos)
             {
                 Console.WriteLine("{0}|{1}|{2}",p.code,p.descripcion,p.precio);
             }
+
+
+
+
+
+
 
            /* Console.WriteLine("Captura el archivo a ocultar");
             string archivo=Console.ReadLine();
