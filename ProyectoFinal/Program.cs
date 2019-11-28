@@ -12,10 +12,23 @@ namespace ProyectoFinal
 
      public void Producto(string Codigo,string Descripcion,decimal Precio,int Departamento,int Likes)
      {
+      this.Codigo=Codigo;
+      this.Descripcion=Descripcion;
+      this.Precio=Precio;
+      this.Departamento=Departamento;
+      this.Likes=Likes;
+     }
 
+     public void Producto()
+     {
      }
     }
+    
+    class ProductoDB
+    {
 
+
+    }
 
 
     class Program
