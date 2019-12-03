@@ -6,11 +6,11 @@ namespace ProyectoFinal
 {
     class Producto
     {
-     public string Codigo;
-     public string Descripcion;
-     public double Precio;
-     public string Departamento;
-     public int Likes;
+     public string Codigo{get;set;}
+     public string Descripcion{get;set;}
+     public double Precio{get;set;}
+     public string Departamento{get;set;}
+     public int Likes{get;set;}
 
      public Producto(string C,string D,double P,string Dep,int L)
      {
@@ -53,6 +53,7 @@ namespace ProyectoFinal
         }
             TXTOUT.Close(); 
 
+
          FileStream FS2=new FileStream(@"Producto.bin",FileMode.OpenOrCreate,FileAccess.Write);    
          BinaryWriter binOut=new BinaryWriter(FS2);
          foreach(Producto pb in productos)
@@ -62,8 +63,6 @@ namespace ProyectoFinal
           binOut.Write(pb.Precio);
           binOut.Write(pb.Departamento);
           binOut.Write(pb.Likes);
-
-
          }
          binOut.Close();
         }

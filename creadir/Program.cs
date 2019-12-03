@@ -1,7 +1,8 @@
 ﻿using System;
 using System.IO;
+using System.Linq;
 using System.Collections.Generic;
-
+using System.Text.Json;
 
 namespace creadir
 {   
@@ -100,27 +101,45 @@ namespace creadir
         {
         List<Producto> productos = new List<Producto>();
         productos.Add(new Producto("AQW","Lapiz Azul w2", 12.23d));            
-        productos.Add(new Producto("AQW","Lapiz Verde w2", 12.23d));            
-        productos.Add(new Producto("AQW","Pluma Azul w2", 12.23d));            
-        productos.Add(new Producto("AQW","Borrador ww2", 12.23d));            
+        productos.Add(new Producto("AQW","Lapiz Verde w2", 92.23d));            
+        productos.Add(new Producto("AQW","Pluma Azul w2", 56.23d));            
+        productos.Add(new Producto("AQW","Borrador ww2", 82.23d));            
 
+       /*
         ProductoArchivo.EscribeProductosBIN(@"productos.bin", productos);
 
         Console.WriteLine("Archivo Grabado");
         Console.ReadKey();
 
         List<Producto> productos_leidos = ProductoArchivo.LeeProductosBIN("producto.bin");
+        */
+                // Specify the data source.
+        
 
-        foreach(Producto p in productos_leidos)
-             {    
+        // Define the query expression.
+        IEnumerable<Producto> productoQuery =
+            from p in productos 
+            where p.precio > 80
+            orderby p.descripcion
+            select p;
+
+        IEnumerable<Producto> productoQuery2 =  productos.Select(p => p).Where( p => p.precio > 80).OrderBy(p => p.descripcion);
+        
+        // Execute the query.
+        foreach (Producto p in productoQuery)
+        {
+            Console.WriteLine(p.descripcion + " ");
+        }
+ /*
+        foreach(Producto p in productos)
+           {    
              Console.WriteLine("{0} {1} {2}", p.codigo,p.descripcion,p.precio);
            }
-           
-    
-      //  var jsonString = JsonSerializer.Serialize(productos_leidos);
-      //  File.WriteAllText("fileName.json", jsonString);
-      //  Console.WriteLine(jsonString);
-
+   
+        var jsonString = JsonSerializer.Serialize(productos);
+        File.WriteAllText("fileName.json", jsonString);
+        Console.WriteLine(jsonString);
+*/ 
 
         }
     }
