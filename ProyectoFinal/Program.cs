@@ -6,11 +6,11 @@ namespace ProyectoFinal
 {
     class Producto
     {
-     public string Codigo{get;set;}
-     public string Descripcion{get;set;}
-     public double Precio{get;set;}
-     public string Departamento{get;set;}
-     public int Likes{get;set;}
+     public string Codigo;
+     public string Descripcion;
+     public double Precio;
+     public string Departamento;
+     public int Likes;
 
      public Producto(string C,string D,double P,string Dep,int L)
      {
@@ -30,7 +30,7 @@ namespace ProyectoFinal
     {
     public static void ProductosTXTOUT(string datos,List<Producto> productos)
     {
-     FileStream FileS1=new FileStream(datos,FileMode.OpenOrCreate,FileAccess.Write);
+        FileStream FileS1=new FileStream(datos,FileMode.OpenOrCreate,FileAccess.Write);
         StreamWriter TXTOUT =new StreamWriter(FileS1);
             
         foreach(Producto p in productos)
@@ -42,7 +42,7 @@ namespace ProyectoFinal
 
     public static void ProductosBINOUT(string datos,List<Producto> productos)
     {
-    FileStream FileS2=new FileStream(datos,FileMode.OpenOrCreate,FileAccess.Write);    
+         FileStream FileS2=new FileStream(datos,FileMode.OpenOrCreate,FileAccess.Write);    
          BinaryWriter binOut=new BinaryWriter(FileS2);
          foreach(Producto pb in productos)
          {
@@ -57,7 +57,7 @@ namespace ProyectoFinal
 
     public static List<Producto> ProductosTXTIN(string datos)
     {
-    StreamReader TXTIN=new StreamReader(new FileStream(datos,FileMode.OpenOrCreate,FileAccess.Read));    
+    StreamReader TXTIN=new StreamReader(new FileStream(datos,FileMode.Open,FileAccess.Read));    
     List<Producto> productos =new List<Producto>();
     string row="";  
     while (TXTIN.Peek()!= -1)
@@ -106,12 +106,22 @@ namespace ProyectoFinal
         productos.Add(new Producto("3","Lapiz Bic",4.42d,"Papeleria",60));
         productos.Add(new Producto("4","Libreta Norma",11.54d,"Papeleria",70));
 
-        ProductoDB.ProductosTXTOUT(@"Producto.bin",productos);
+        ProductoDB.ProductosBINOUT(@"Producto.bin",productos);
+        Console.WriteLine("Datos guardados en formato bin");
 
-        List<Producto> ProductosINB = ProductoDB.ProductosBININ("Producto.bin");
+        List<Producto> ProductosINB = ProductoDB.ProductosBININ(@"Producto.bin");
         foreach(Producto PB in ProductosINB)
         {
-            Console.WriteLine("{0},{1},{2},{3},{4}",PB.Codigo,PB.Descripcion,PB.Precio,PB.Departamento,PB.Likes);
+            Console.WriteLine("{0} {1} {2} {3} {4}",PB.Codigo,PB.Descripcion,PB.Precio,PB.Departamento,PB.Likes);
+        }
+
+        ProductoDB.ProductosTXTOUT(@"Producto.txt", productos);
+        Console.WriteLine("Datos guardados en formato txt");
+        
+        List<Producto> ProductoINT = ProductoDB.ProductosTXTIN(@"Producto.txt");
+        foreach(Producto PT in ProductoINT)
+        {
+             Console.WriteLine("{0} {1} {2} {3} {4}", PT.Codigo, PT.Descripcion, PT.Precio, PT.Departamento, PT.Likes);  
         }
         }
     }
