@@ -57,9 +57,9 @@ namespace ProyectoFinal
 
     public static List<Producto> ProductosTXTIN(string datos)
     {
-    StreamReader TXTIN=new StreamReader(new FileStream(datos,FileMode.OpenOrCreate,FileAccess.Write));    
+    StreamReader TXTIN=new StreamReader(new FileStream(datos,FileMode.OpenOrCreate,FileAccess.Read));    
     List<Producto> productos =new List<Producto>();
-    string row="";    
+    string row="";  
     while (TXTIN.Peek()!= -1)
     {
        string fila=TXTIN.ReadLine();
@@ -72,17 +72,14 @@ namespace ProyectoFinal
        producto.Likes=Convert.ToInt32(columna[4]);
        productos.Add(producto);
     }
-    TXTIN.Close();
-
     return productos;
-
     }
 
     public static List<Producto> ProductosBININ(string datos)
     {
-    BinaryReader BININ=new BinaryReader(new FileStream(datos,FileMode.OpenOrCreate,FileAccess.Write));    
+    BinaryReader BININ =new BinaryReader(new FileStream(datos,FileMode.Open,FileAccess.Read));    
     List<Producto> productos =new List<Producto>();
-    while (BININ.PeekChar()!= -1)
+    while (BININ.PeekChar() != -1)
     {
     Producto producto =new Producto();
     producto.Codigo= BININ.ReadString();
@@ -92,8 +89,9 @@ namespace ProyectoFinal
     producto.Likes= BININ.ReadInt32();
     productos.Add(producto);
     } 
-    BININ.Close();
+    return productos;
     }
+
 
     }
 
@@ -110,7 +108,7 @@ namespace ProyectoFinal
 
         ProductoDB.ProductosTXTOUT(@"Producto.bin",productos);
 
-        List<Producto> ProductosINB= ProductoDB.ProductosBININ("Producto.bin");
+        List<Producto> ProductosINB = ProductoDB.ProductosBININ("Producto.bin");
         foreach(Producto PB in ProductosINB)
         {
             Console.WriteLine("{0},{1},{2},{3},{4}",PB.Codigo,PB.Descripcion,PB.Precio,PB.Departamento,PB.Likes);
