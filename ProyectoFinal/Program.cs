@@ -59,7 +59,7 @@ namespace ProyectoFinal
     {
     StreamReader TXTIN=new StreamReader(new FileStream(datos,FileMode.Open,FileAccess.Read));    
     List<Producto> productos =new List<Producto>();
-    string row="";  
+    string row=" ";  
     while (TXTIN.Peek()!= -1)
     {
        string fila=TXTIN.ReadLine();
@@ -121,8 +121,14 @@ namespace ProyectoFinal
         List<Producto> ProductoINT = ProductoDB.ProductosTXTIN(@"Producto.txt");
         foreach(Producto PT in ProductoINT)
         {
-             Console.WriteLine("{0} {1} {2} {3} {4}", PT.Codigo, PT.Descripcion, PT.Precio, PT.Departamento, PT.Likes);  
+             Console.Write (PT.Codigo+"|");
+             Console.Write (PT.Descripcion+"|");
+             Console.Write (PT.Precio+"|");
+             Console.Write (PT.Departamento+"|");
+             Console.Write (PT.Likes);
+
         }
+
         }
     }
 }
