@@ -29,7 +29,7 @@ namespace ProyectoFinal
     
     class ProductoDB
     {
-    public int depo;
+    
 
     public static void ProductosTXTOUT(string datos,List<Producto> productos)
     {
@@ -96,27 +96,33 @@ namespace ProyectoFinal
     return productos;
     }
     
-    public void GetDepartment(int depo)
+    public static void GetDepartment()
     {
+    string eleccion = Console.ReadLine();
+    int depo=Convert.ToInt32(eleccion);
+    
      switch (depo)
      {
-      case A:
-       Console.WriteLine("1|Libreta Scribe|40.52|DepA|40");
+      case 1:
+       Console.WriteLine("1|Libreta Scribe|40.52|Departamento 1|40");
       break;
 
-      case B:
-       Console.WriteLine("2|Pluma Negra Bic|5.53|DepB|50");      
+      case 2:
+       Console.WriteLine("2|Pluma Negra Bic|5.53|Departamento 2|50");      
       break;
 
-      case C:
-       Console.WriteLine("3|Lapiz Bic|4.42|DepC|60");
+      case 3:
+       Console.WriteLine("3|Lapiz Bic|4.42|Departamento 3|60");
       break;
 
-      case D:
-       Console.WriteLine("4|Libreta Norma|11.54|DepD|70");
+      case 4:
+       Console.WriteLine("4|Libreta Norma|11.54|Departamento 4|70");
       break;
 
-    
+      case 5:
+       Console.WriteLine("Salida");
+      break;
+
       default:
       Console.WriteLine("Fin de lista");
       break;
@@ -133,10 +139,10 @@ namespace ProyectoFinal
         static void Main(string[] args)
         {
         List<Producto> productos =new List<Producto>();
-        productos.Add(new Producto("1","Libreta Scribe",40.52d,"DepA",40));
-        productos.Add(new Producto("2","Pluma Negra Bic",5.53d,"DepB",50));
-        productos.Add(new Producto("3","Lapiz Bic",4.42d,"DepC",60));
-        productos.Add(new Producto("4","Libreta Norma",11.54d,"DepD",70));
+        productos.Add(new Producto("1","Libreta Scribe",40.52d,"Departamento 1",40));
+        productos.Add(new Producto("2","Pluma Negra Bic",5.53d,"Departamento 2",50));
+        productos.Add(new Producto("3","Lapiz Bic",4.42d,"Departamento 3",60));
+        productos.Add(new Producto("4","Libreta Norma",11.54d,"Departamento 4",70));
 
         ProductoDB.ProductosBINOUT(@"Producto.bin",productos);
         Console.WriteLine("Datos guardados en formato bin");
@@ -157,6 +163,15 @@ namespace ProyectoFinal
         {
          Console.WriteLine("{0} {1} {2} {3} {4}",PT.Codigo,PT.Descripcion,PT.Precio,PT.Departamento,PT.Likes);
         }
+
+        Console.WriteLine("Escoge un Departamento");
+        Console.WriteLine("--------------------------------");
+        Console.WriteLine("1)Departamento 1");
+        Console.WriteLine("2)Departamento 2");
+        Console.WriteLine("3)Departamento 3");
+        Console.WriteLine("4)Departamento 4");
+        Console.WriteLine("5)Salir");
+        ProductoDB.GetDepartment();
 
         }
     }
