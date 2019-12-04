@@ -59,10 +59,10 @@ namespace ProyectoFinal
     {
     StreamReader TXTIN=new StreamReader(new FileStream(datos,FileMode.Open,FileAccess.Read));    
     List<Producto> productos =new List<Producto>();
-    string row=" ";  
+      
     while (TXTIN.Peek()!= -1)
     {
-       string fila=TXTIN.ReadLine();
+       string row=TXTIN.ReadLine();
        string[] columna= row.Split('|');
        Producto producto =new Producto();
        producto.Codigo= columna[0];
@@ -108,6 +108,7 @@ namespace ProyectoFinal
 
         ProductoDB.ProductosBINOUT(@"Producto.bin",productos);
         Console.WriteLine("Datos guardados en formato bin");
+        Console.WriteLine("--------------------------------");
 
         List<Producto> ProductosINB = ProductoDB.ProductosBININ(@"Producto.bin");
         foreach(Producto PB in ProductosINB)
@@ -117,16 +118,12 @@ namespace ProyectoFinal
 
         ProductoDB.ProductosTXTOUT(@"Producto.txt", productos);
         Console.WriteLine("Datos guardados en formato txt");
+        Console.WriteLine("--------------------------------");
         
         List<Producto> ProductoINT = ProductoDB.ProductosTXTIN(@"Producto.txt");
         foreach(Producto PT in ProductoINT)
         {
-             Console.Write (PT.Codigo+"|");
-             Console.Write (PT.Descripcion+"|");
-             Console.Write (PT.Precio+"|");
-             Console.Write (PT.Departamento+"|");
-             Console.Write (PT.Likes);
-
+         Console.WriteLine("{0} {1} {2} {3} {4}",PT.Codigo,PT.Descripcion,PT.Precio,PT.Departamento,PT.Likes);
         }
 
         }
