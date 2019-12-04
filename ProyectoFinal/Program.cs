@@ -128,8 +128,16 @@ namespace ProyectoFinal
       break;
       
      }
+   
     }
+    
+    public static void MayorLikes(int Likes)
+    {
+     for(int i ; i<6 ; i++)
+     {
 
+     }
+    }
 
     }
 
