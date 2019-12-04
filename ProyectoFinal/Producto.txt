@@ -1,4 +1,4 @@
-1|Libreta Scribe|40.52|Papeleria|40
-2|Pluma Negra Bic|5.53|Papeleria|50
-3|Lapiz Bic|4.42|Papeleria|60
-4|Libreta Norma|11.54|Papeleria|70
+1|Libreta Scribe|40.52|DepA|40
+2|Pluma Negra Bic|5.53|DepB|50
+3|Lapiz Bic|4.42|DepC|60
+4|Libreta Norma|11.54|DepD|70
