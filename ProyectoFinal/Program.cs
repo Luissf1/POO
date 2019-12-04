@@ -89,6 +89,7 @@ namespace ProyectoFinal
     producto.Likes= BININ.ReadInt32();
     productos.Add(producto);
     } 
+    BININ.Close();
     return productos;
     }
 
