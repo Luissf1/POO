@@ -29,8 +29,6 @@ namespace ProyectoFinal
     
     class ProductoDB
     {
-    
-
     public static void ProductosTXTOUT(string datos,List<Producto> productos)
     {
         FileStream FileS1=new FileStream(datos,FileMode.OpenOrCreate,FileAccess.Write);
@@ -59,8 +57,8 @@ namespace ProyectoFinal
     }
 
     public static List<Producto> ProductosTXTIN(string datos)
-    {
-    StreamReader TXTIN=new StreamReader(new FileStream(datos,FileMode.Open,FileAccess.Read));    
+    {  
+    StreamReader TXTIN=new StreamReader(new FileStream(datos,FileMode.Open,FileAccess.Read));
     List<Producto> productos =new List<Producto>();
       
     while (TXTIN.Peek()!= -1)
@@ -130,14 +128,48 @@ namespace ProyectoFinal
      }
    
     }
-    
-    public static void MayorLikes(int Likes)
+   
+   
+    public static void Exepciones(string datos)
     {
-     for(int i ; i<6 ; i++)
-     {
-
-     }
+        string dirpath = datos;
+        string filepath1 = dirpath +"Productos.txt";
+        string filepath2 = dirpath +"Productos.bin";
+        FileStream Fs1=null;
+        FileStream Fs2=null;
+        try
+        {
+         Fs1=new FileStream(filepath1,FileMode.Open);
+         Fs2=new FileStream(filepath1,FileMode.Open);
+        }
+        catch(FileNotFoundException)
+        {
+        Console.Write(filepath1 +" no encontrado.","Archivo no encontrado");
+        Console.Write(filepath2 +" no encontrado.","Archivo no encontrado");
+        }
+        catch(DirectoryNotFoundException)
+        {
+        Console.Write(dirpath +" no encontrado.","Directorio no encontrado");
+        }
+        catch(IOException )
+        {
+        Console.Write("IOException");
+        }
+        finally
+        {
+            Fs1.Close();
+            Fs2.Close();
+        }
     }
+   
+    
+   /*public static void MayorLikes(int Likes)
+    {
+     for(int i =0; i<6 ; i++)
+     {
+          
+     }
+    }*/
 
     }
 
