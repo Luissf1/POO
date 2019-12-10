@@ -31,21 +31,38 @@ namespace ProyectoFinal
     {
     public static void ProductosTXTOUT(string datos,List<Producto> productos)
     {
-        FileStream FileS1=new FileStream(datos,FileMode.OpenOrCreate,FileAccess.Write);
-        StreamWriter TXTOUT =new StreamWriter(FileS1);
-            
-        foreach(Producto p in productos)
+        try
         {
-         TXTOUT.WriteLine("{0}|{1}|{2}|{3}|{4}",p.Codigo,p.Descripcion,p.Precio,p.Departamento,p.Likes);
+         FileStream FileS1 = new FileStream(datos, FileMode.OpenOrCreate, FileAccess.Write);
+         StreamWriter TXTOUT = new StreamWriter(FileS1);
+
+             foreach (Producto p in productos)
+             {
+              TXTOUT.WriteLine("{0}|{1}|{2}|{3}|{4}", p.Codigo, p.Descripcion, p.Precio, p.Departamento, p.Likes);
+              }
+              TXTOUT.Close();
         }
-        TXTOUT.Close(); 
+       catch(FileNotFoundException)
+        {
+        Console.Write("Archivo no encontrado");
+        }
+        catch(DirectoryNotFoundException)
+        {
+        Console.Write("Directorio no encontrado");
+        }
+        catch(IOException )
+        {
+        Console.Write("IOException");
+        }
+                 
     }
 
     public static void ProductosBINOUT(string datos,List<Producto> productos)
-    {
-         FileStream FileS2=new FileStream(datos,FileMode.OpenOrCreate,FileAccess.Write);    
-         BinaryWriter binOut=new BinaryWriter(FileS2);
-         foreach(Producto pb in productos)
+    {   
+        try{
+         FileStream FileS2 = new FileStream(datos, FileMode.OpenOrCreate, FileAccess.Write);
+         BinaryWriter binOut = new BinaryWriter(FileS2);
+         foreach (Producto pb in productos)
          {
           binOut.Write(pb.Codigo);
           binOut.Write(pb.Descripcion);
@@ -53,7 +70,21 @@ namespace ProyectoFinal
           binOut.Write(pb.Departamento);
           binOut.Write(pb.Likes);
          }
-        binOut.Close();
+         binOut.Close();
+        }
+         catch (FileNotFoundException)
+         {
+         Console.Write("Archivo no encontrado");
+         }
+         catch (DirectoryNotFoundException)
+         {
+          Console.Write("Directorio no encontrado");
+         }
+         catch (IOException)
+         {
+         Console.Write("IOException");
+         }
+         
     }
 
     public static List<Producto> ProductosTXTIN(string datos)
@@ -128,48 +159,6 @@ namespace ProyectoFinal
      }
    
     }
-   
-   
-    public static void Exepciones(string datos)
-    {
-        string dirpath = datos;
-        string filepath1 = dirpath +"Productos.txt";
-        string filepath2 = dirpath +"Productos.bin";
-        FileStream Fs1=null;
-        FileStream Fs2=null;
-        try
-        {
-         Fs1=new FileStream(filepath1,FileMode.Open);
-         Fs2=new FileStream(filepath1,FileMode.Open);
-        }
-        catch(FileNotFoundException)
-        {
-        Console.Write(filepath1 +" no encontrado.","Archivo no encontrado");
-        Console.Write(filepath2 +" no encontrado.","Archivo no encontrado");
-        }
-        catch(DirectoryNotFoundException)
-        {
-        Console.Write(dirpath +" no encontrado.","Directorio no encontrado");
-        }
-        catch(IOException )
-        {
-        Console.Write("IOException");
-        }
-        finally
-        {
-            Fs1.Close();
-            Fs2.Close();
-        }
-    }
-   
-    
-   /*public static void MayorLikes(int Likes)
-    {
-     for(int i =0; i<6 ; i++)
-     {
-          
-     }
-    }*/
 
     }
 
