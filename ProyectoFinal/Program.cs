@@ -1,6 +1,7 @@
 ﻿using System;
 using System.IO;
 using System.Collections.Generic;
+using System.Linq;
 
 namespace ProyectoFinal
 {
@@ -9,10 +10,10 @@ namespace ProyectoFinal
      public string Codigo;
      public string Descripcion;
      public double Precio;
-     public string Departamento;
+     public int Departamento;
      public int Likes;
 
-     public Producto(string C,string D,double P,string Dep,int L)
+     public Producto(string C,string D,double P,int Dep,int L)
      {
       this.Codigo=C;
       this.Descripcion=D;
@@ -29,6 +30,7 @@ namespace ProyectoFinal
     
     class ProductoDB
     {
+        public List<Producto> productos =new List<Producto>();
     public static void ProductosTXTOUT(string datos,List<Producto> productos)
     {
         try
@@ -100,7 +102,7 @@ namespace ProyectoFinal
        producto.Codigo= columna[0];
        producto.Descripcion= columna[1];
        producto.Precio= Convert.ToDouble(columna[2]);
-       producto.Departamento= columna[3];
+       producto.Departamento= Convert.ToInt32(columna[3]);
        producto.Likes=Convert.ToInt32(columna[4]);
        productos.Add(producto);
     }
@@ -117,7 +119,7 @@ namespace ProyectoFinal
     producto.Codigo= BININ.ReadString();
     producto.Descripcion= BININ.ReadString();
     producto.Precio= BININ.ReadDouble();
-    producto.Departamento= BININ.ReadString();
+    producto.Departamento= BININ.ReadInt32();
     producto.Likes= BININ.ReadInt32();
     productos.Add(producto);
     } 
@@ -125,9 +127,20 @@ namespace ProyectoFinal
     return productos;
     }
     
-    public static void GetDepartment()
+    public void GetDepartment(int depo)
     {
-    string eleccion = Console.ReadLine();
+        IEnumerable<Producto> dep =
+        from p in productos
+        where p.Departamento == depo
+        select p;
+        Console.WriteLine(" Departamento seleccionado : "+ depo);
+        Console.WriteLine("----------------------------");
+        foreach(Producto p in dep)
+        {
+            Console.WriteLine("{0} {1} {2} {3} {4}", p.Codigo, p.Descripcion,p.Precio, p.Departamento,p.Likes);
+        }
+
+    /*string eleccion = Console.ReadLine();
     int depo=Convert.ToInt32(eleccion);
     
      switch (depo)
@@ -156,8 +169,22 @@ namespace ProyectoFinal
       Console.WriteLine("Fin de lista");
       break;
       
-     }
-   
+     }*/
+    }
+
+    public void OrdenarLikes()
+    {
+    IEnumerable<Producto> likes=
+    from p in productos
+    orderby p.Likes
+    select p;
+    Console.WriteLine("Productos ordenados por likes: " + likes);
+    Console.WriteLine("----------------------------");
+    foreach (Producto p in likes)
+    {
+    Console.WriteLine("{0} {1} {2} {3} {4}", p.Codigo, p.Descripcion, p.Precio, p.Departamento, p.Likes);
+    }
+
     }
 
     }
@@ -168,10 +195,16 @@ namespace ProyectoFinal
         static void Main(string[] args)
         {
         List<Producto> productos =new List<Producto>();
-        productos.Add(new Producto("1","Libreta Scribe",40.52d,"Departamento 1",40));
-        productos.Add(new Producto("2","Pluma Negra Bic",5.53d,"Departamento 2",50));
-        productos.Add(new Producto("3","Lapiz Bic",4.42d,"Departamento 3",60));
-        productos.Add(new Producto("4","Libreta Norma",11.54d,"Departamento 4",70));
+        ProductoDB pro=new ProductoDB();
+        pro.productos.Add(new Producto("1","Libreta Scribe",40.52d,1,50));
+        pro.productos.Add(new Producto("2","Pluma Negra Bic",5.53d,2,30));
+        pro.productos.Add(new Producto("3","Lapiz Bic",4.42d,3,60));
+        pro.productos.Add(new Producto("4","Libreta Norma",11.54d,4,20));
+
+        productos.Add(new Producto("1", "Libreta Scribe", 40.52d, 1, 50));
+        productos.Add(new Producto("2", "Pluma Negra Bic", 5.53d, 2, 30));
+        productos.Add(new Producto("3", "Lapiz Bic", 4.42d, 3, 60));
+        productos.Add(new Producto("4", "Libreta Norma", 11.54d, 4, 20));
 
         ProductoDB.ProductosBINOUT(@"Producto.bin",productos);
         Console.WriteLine("Datos guardados en formato bin");
@@ -193,14 +226,15 @@ namespace ProyectoFinal
          Console.WriteLine("{0} {1} {2} {3} {4}",PT.Codigo,PT.Descripcion,PT.Precio,PT.Departamento,PT.Likes);
         }
 
-        Console.WriteLine("Escoge un Departamento");
+        /*Console.WriteLine("Escoge un Departamento");
         Console.WriteLine("--------------------------------");
         Console.WriteLine("1)Departamento 1");
         Console.WriteLine("2)Departamento 2");
         Console.WriteLine("3)Departamento 3");
         Console.WriteLine("4)Departamento 4");
-        Console.WriteLine("5)Salir");
-        ProductoDB.GetDepartment();
+        Console.WriteLine("5)Salir");*/
+        pro.GetDepartment(4);
+        pro.OrdenarLikes();
 
         }
     }
