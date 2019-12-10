@@ -4,15 +4,18 @@ using System.Collections.Generic;
 using System.Linq;
 
 namespace ProyectoFinal
-{
+{   
+    //Clase la cual tendra los productos y sera utilizada para crear objetos tipo Producto
     class Producto
     {
+    //creacion de variables 
      public string Codigo;
      public string Descripcion;
      public double Precio;
      public int Departamento;
      public int Likes;
-
+    
+    //Creacion de constructor
      public Producto(string C,string D,double P,int Dep,int L)
      {
       this.Codigo=C;
@@ -21,7 +24,7 @@ namespace ProyectoFinal
       this.Departamento=Dep;
       this.Likes=L;
      }
-
+    //Sobre carga de constructor
      public Producto()
      {
      }
@@ -30,14 +33,19 @@ namespace ProyectoFinal
     
     class ProductoDB
     {
+        //Lista para utilizar en los metodos de getdepartamento y ordenarlikes
         public List<Producto> productos =new List<Producto>();
+
+    //Metodo para poder escribir productos en formato txt    
     public static void ProductosTXTOUT(string datos,List<Producto> productos)
-    {
+    {  
         try
         {
+        //Permite crear y abrir un archivo
          FileStream FileS1 = new FileStream(datos, FileMode.OpenOrCreate, FileAccess.Write);
+         //Permite escribir en el archivo forma txt
          StreamWriter TXTOUT = new StreamWriter(FileS1);
-
+            
              foreach (Producto p in productos)
              {
               TXTOUT.WriteLine("{0}|{1}|{2}|{3}|{4}", p.Codigo, p.Descripcion, p.Precio, p.Departamento, p.Likes);
@@ -59,10 +67,13 @@ namespace ProyectoFinal
                  
     }
 
+    //Metodo para poder escribir en formato bin
     public static void ProductosBINOUT(string datos,List<Producto> productos)
     {   
         try{
+        //Permite crear y abrir archivos
          FileStream FileS2 = new FileStream(datos, FileMode.OpenOrCreate, FileAccess.Write);
+         //Permite escribir en forma binaria 
          BinaryWriter binOut = new BinaryWriter(FileS2);
          foreach (Producto pb in productos)
          {
@@ -88,17 +99,22 @@ namespace ProyectoFinal
          }
          
     }
-
+    //Metodo para poder leer archivos txt
     public static List<Producto> ProductosTXTIN(string datos)
     {  
+    //Permite abrir y leer archivos ya existentes
     StreamReader TXTIN=new StreamReader(new FileStream(datos,FileMode.Open,FileAccess.Read));
+    //Permite crear lista de tipo Producto
     List<Producto> productos =new List<Producto>();
-      
+    //Permite realizar un ciclo mientras hay atributos 
     while (TXTIN.Peek()!= -1)
-    {
+    {  
+       //Permite partir ala mitad los strings
        string row=TXTIN.ReadLine();
        string[] columna= row.Split('|');
+       //Creacion del objeto tipo Producto
        Producto producto =new Producto();
+       //Agrega cada uno de los variables en los objetos producto
        producto.Codigo= columna[0];
        producto.Descripcion= columna[1];
        producto.Precio= Convert.ToDouble(columna[2]);
@@ -106,16 +122,23 @@ namespace ProyectoFinal
        producto.Likes=Convert.ToInt32(columna[4]);
        productos.Add(producto);
     }
+    //regresa los productos en producto
     return productos;
     }
-
+    
+    //Metodo que permite leer los archivos tipo bin 
     public static List<Producto> ProductosBININ(string datos)
     {
-    BinaryReader BININ =new BinaryReader(new FileStream(datos,FileMode.Open,FileAccess.Read));    
+    //Permite leer los archivos bin ,que ya existen 
+    BinaryReader BININ =new BinaryReader(new FileStream(datos,FileMode.Open,FileAccess.Read));
+    //Crea lista de productos    
     List<Producto> productos =new List<Producto>();
+    //ciclo el cual acaba hasta queya no encuentre atributos
     while (BININ.PeekChar() != -1)
     {
+    //Creacion de objeto tipo producto
     Producto producto =new Producto();
+    //Lee las variables en forma binaria
     producto.Codigo= BININ.ReadString();
     producto.Descripcion= BININ.ReadString();
     producto.Precio= BININ.ReadDouble();
@@ -123,12 +146,16 @@ namespace ProyectoFinal
     producto.Likes= BININ.ReadInt32();
     productos.Add(producto);
     } 
+    //Termina la lectura
     BININ.Close();
+    //Regresa productos
     return productos;
     }
     
+    //Metodo que permite imprimir solo el departmento seleccionado
     public void GetDepartment(int depo)
-    {
+    {   
+        //Permite enumerar los productos y permitir solo imprimir el departamento seleccionado
         IEnumerable<Producto> dep =
         from p in productos
         where p.Departamento == depo
@@ -142,8 +169,10 @@ namespace ProyectoFinal
 
     }
 
+    //Metodo que permite ordenar por likes
     public void OrdenarLikes()
-    {
+    { 
+    //Enumera los productos en base a sus likes
     IEnumerable<Producto> likes=
     from p in productos
     orderby p.Likes
