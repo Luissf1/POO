@@ -97,6 +97,10 @@ namespace ProyectoFinal
          {
          Console.Write("IOException");
          }
+         finally
+         {
+             
+         }
          
     }
     //Metodo para poder leer archivos txt
